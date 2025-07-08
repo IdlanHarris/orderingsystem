@@ -1,6 +1,7 @@
 "use client";
 
 import { useCart } from "@/app/context/CartContext";
+import { useRouter } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -13,6 +14,8 @@ export default function CartPage() {
     totalItems,
     totalPrice,
   } = useCart();
+
+  const router = useRouter();
 
   return (
     <div className="p-8 max-w-4xl mx-auto">
@@ -103,7 +106,10 @@ export default function CartPage() {
                   Clear Cart
                 </button>
               </div>
-              <button className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700">
+              <button
+                onClick={() => router.push("/checkout")}
+                className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700"
+                >
                 Proceed to Checkout
               </button>
             </div>
